@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('specialization_user', function (Blueprint $table) {
         
             $table->unsignedBigInteger('specialization_id');
-            $table->foreign('specialization_id')->references('id')->on('specializations')->nullOnDelete();
+            $table->foreign('specialization_id')->references('id')->on('specializations')->cascadeOnDelete();
 
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->nullOnDelete();
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             
             $table->primary(['specialization_id', 'user_id']);
         });
