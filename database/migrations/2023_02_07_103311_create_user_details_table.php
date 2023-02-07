@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('photo')->nullable();
             $table->string('curriculum')->nullable();
-            $table->string('performance', 200)->nullable();
             $table->integer('phone')->unsigned()->nullable();
+            $table->string('performance', 200)->nullable();
+            $table->string('address');
+            $table->text('description')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
