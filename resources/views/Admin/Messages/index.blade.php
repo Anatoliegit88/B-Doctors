@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2>Tutti i messagi</h2>
+    <div class="container mt-5">
+        <h2>message</h2>
+    </div>
 @endsection
