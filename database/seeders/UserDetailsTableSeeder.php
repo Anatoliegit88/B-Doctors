@@ -20,7 +20,7 @@ class UserDetailsTableSeeder extends Seeder
 
     
         
-        for ($i = 0; $i < 15; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $user_detail = new UserDetail();
             $user_detail->photo = $faker->image(null, 640, 480);
             $user_detail->curriculum = $faker->mimeType();

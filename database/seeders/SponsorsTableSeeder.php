@@ -15,8 +15,10 @@ class SponsorsTableSeeder extends Seeder
      * @return void
      */
     public function run(Faker $faker)
+
     {
-        for ($i = 0; $i < 15; $i++) {
+        for ($i = 0; $i < 3; $i++) 
+        {
             $sponsor = new Sponsor();
             $sponsor->title = $faker->sentence(1);
             $sponsor->slug = Str::slug($sponsor->title, '-');

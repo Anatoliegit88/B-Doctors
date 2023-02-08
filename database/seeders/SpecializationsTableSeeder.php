@@ -16,9 +16,9 @@ class SpecializationsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i = 0; $i < 15; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $specialization = new Specialization();
-            $specialization->title = $faker->sentence();
+            $specialization->title = $faker->sentence(2);
             $specialization->slug = Str::slug($specialization->title, '-');
             $specialization->save(); 
         }
