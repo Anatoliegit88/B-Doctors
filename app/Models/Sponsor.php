@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Sponsor extends Model
 {
     use HasFactory;
-    public function users(){
-        return $this->belongsToMany(User::class); 
+    protected $fillable = ['title', 'slug', 'price', 'description'];
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
     }
 }
