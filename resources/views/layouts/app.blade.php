@@ -88,24 +88,12 @@
             </div>
         </nav>
 
-        {{-- sidebar custom test --}}
-        <div class="row fluid-container vh-100 ">
-            <nav class="col-2 h-100 bg-info pt-5">
-                <ul >
-                    <li><a href="{{ route('admin.profiles.show', auth()->user()->id) }}">profile</a></li>
-                    <li><a href="{{ route('admin.sponsor') }}">sponsors</a></li>
-                    <li><a href="{{ route('admin.specialization') }}">Specialization</a></li>
-                    <li><a href="{{ route('admin.message') }}">message</a></li>
-                    <li><a href="{{ route('admin.feedback') }}">feedback</a></li>
-                </ul>
-            </nav> 
-            <main class="col-8 pt-5">
-                <div >
-                    @yield('content')
-                </div>
-            </main>
-        </div>
-    </div>
+        <main >
+            <div>
+                @yield('content')
+            </div>
+        </main>
+
 </body>
 
 </html>
