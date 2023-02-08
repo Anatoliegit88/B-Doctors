@@ -9,11 +9,11 @@ class SponsorController extends Controller
 {
     public function index()
     {
-        return 'piani';
+        return view('Admin.Sponsors.index');
     }
 
     public function show()
     {
-        return 'piano single';
+        return view('Admin.Sponsors.show');
     }
 }

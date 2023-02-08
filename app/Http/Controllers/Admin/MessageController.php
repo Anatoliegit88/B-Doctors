@@ -9,11 +9,11 @@ class MessageController extends Controller
 {
     public function index()
     {
-        return 'messages';
+        return view('admin.messages.index');
     }
 
     public function show()
     {
-        return 'message singolo';
+        return view('admin.messages.show');
     }
 }

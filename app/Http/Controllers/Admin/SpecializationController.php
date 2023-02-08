@@ -9,6 +9,6 @@ class SpecializationController extends Controller
 {
     public function index()
     {
-        return 'specialization';
+        return view('Admin.Specializations.index');
     }
 }

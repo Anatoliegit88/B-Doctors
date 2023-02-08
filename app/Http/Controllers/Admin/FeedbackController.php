@@ -9,11 +9,11 @@ class FeedbackController extends Controller
 {
     public function index()
     {
-        return 'tutti i feedback';
+        return view('Admin.Feedback.index');
     }
 
     public function show()
     {
-        return 'singolo feedback';
+        return view('Admin.Feedback.show');
     }
 }

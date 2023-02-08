@@ -9,12 +9,12 @@ class ProfileController extends Controller
 {
     public function show()
     {
-        return 'show profile';
+        return view('Admin.profiles.show');
     }
 
     public function edit()
     {
-        return 'edit';
+        return view('Admin.profiles.edit');
     }
 
     public function update()
