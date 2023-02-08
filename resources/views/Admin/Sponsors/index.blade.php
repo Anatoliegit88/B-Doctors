@@ -9,7 +9,7 @@
                 <li> Tittolo: {{ $sponsor->title }}</li>
                 <li> Descrizzione: <br> {{ $sponsor->description }}</li>
                 <li> Prezzo: {{ $sponsor->price }}</li>
-                <a class="btn btn-success mt-3" href="">Info</a>
+                <a class="btn btn-success mt-3" href="{{ route('admin.sponsor.show', $sponsor->id) }}">Info</a>
                 <hr>
             @endforeach
         </ul>
