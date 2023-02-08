@@ -6,7 +6,7 @@
 
             <div class="col-md-2 v-100 bg-info pt-5">
                 <nav>
-                    <ul>
+                    <ul class="list-unstyled">
                         <li><a class="text-white text-decoration-none fw-bold"
                                 href="{{ route('admin.profiles.show', auth()->user()->id) }}"> Profile </a></li>
                         <li><a class="text-white text-decoration-none fw-bold"
