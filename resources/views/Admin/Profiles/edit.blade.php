@@ -58,7 +58,7 @@
                 <div class="mt-3">
                     @foreach ($specializations as $specialization)
                         <label for="specialization-{{ $specialization->id }}">{{ $specialization->title }}</label>
-                        <input name="specialization[]" type="checkbox" id="specialization-{{ $specialization->id }}"
+                        <input name="specializations[]" type="checkbox" id="specialization-{{ $specialization->id }}"
                             value="{{ $specialization->id }}" @checked($doc->specializations->contains($specialization))>
                         <br>
                     @endforeach

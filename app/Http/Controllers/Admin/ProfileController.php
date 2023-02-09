@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\UserDetail;
 use Faker\Provider\UserAgent;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 class ProfileController extends Controller
 {
@@ -25,11 +26,24 @@ class ProfileController extends Controller
 
     public function update(Request $request, User $profile)
     {
-        
+
         $userdetail = UserDetail::where('user_id', auth()->user()->id)->get();
-        dd($profile);
+        // dd($profile);
 
         $data = $request->all();
-        return view('admin.profiles.show');
+        $profile->update($data);
+
+        if ($request->has('specializations')) {
+            $profile->specializations()->sync($request->specializations);
+        } else {
+            $profile->specializations()->detach();
+        }
+
+        return redirect()->route('admin.profiles.show', $profile->id);
+
+
+        // ----------------
+
+
     }
 }
