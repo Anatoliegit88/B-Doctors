@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Specialization;
 use App\Models\User;
+use App\Models\UserDetail;
+use Faker\Provider\UserAgent;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -23,6 +25,8 @@ class ProfileController extends Controller
 
     public function update(Request $request, User $profile)
     {
+        
+        $userdetail = UserDetail::where('user_id', auth()->user()->id)->get();
         dd($profile);
 
         $data = $request->all();
