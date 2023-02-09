@@ -9,10 +9,9 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function show()
+    public function show(User $profile)
     {
-        $user = User::with('user_detail', 'specializations')->where('id', auth()->user()->id)->get();
-        return view('Admin.profiles.show', compact('user'));
+        return view('Admin.profiles.show', compact('profile'));
     }
 
     public function edit()
@@ -22,11 +21,11 @@ class ProfileController extends Controller
         return view('Admin.profiles.edit', compact('user', 'specializations'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request, User $profile)
     {
-        dd($request->all());
+        dd($profile);
 
-        // $data = $request->all();
-        // return view('admin.profiles.show');
+        $data = $request->all();
+        return view('admin.profiles.show');
     }
 }

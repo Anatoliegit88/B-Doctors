@@ -26,12 +26,17 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
     Route::resource('/profiles', ProfileController::class)->except('destroy', 'create', 'store', 'index');
+    
     Route::get('/specialization', [SpecializationController::class, 'index'])->name('specialization');
+
     Route::get('/sponsors', [SponsorController::class, 'index'])->name('sponsor');
     Route::get('/sponsors/{sponsor}', [SponsorController::class, 'show'])->name('sponsor.show');
+
     Route::get('/feedback', [FeedbackController::class, 'index'])->name('feedback');
     Route::get('/feedback/{feedback}', [FeedbackController::class, 'show'])->name('feedback.show');
+
     Route::get('/messages', [MessageController::class, 'index'])->name('message');
     Route::get('/messages/{message}', [MessageController::class, 'show'])->name('message.show');
 });
