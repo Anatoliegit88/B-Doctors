@@ -27,11 +27,15 @@ class ProfileController extends Controller
     public function update(Request $request, User $profile)
     {
 
-        $userdetail = UserDetail::where('user_id', auth()->user()->id)->get();
-        // dd($profile);
-
         $data = $request->all();
         $profile->update($data);
+
+        $profile->user_detail()->update([
+            'phone' => $data['phone'],
+            'performance' => $data['performance'],
+            'address' => $data['address'],
+            'description' => $data['description'],
+        ]);
 
         if ($request->has('specializations')) {
             $profile->specializations()->sync($request->specializations);

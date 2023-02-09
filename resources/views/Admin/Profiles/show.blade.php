@@ -9,9 +9,11 @@
         <p>Performance: {{ $profile->user_detail?->performance }}</p>
         <p>Address: {{ $profile->user_detail?->address }}</p>
         <p>Description: {{ $profile->user_detail?->description }}</p>
-        @foreach ($profile->specializations as $item)
-            <p>Specialization: {{ $item->title }}</p>
-        @endforeach
+        <p>Specialization:
+            @foreach ($profile->specializations as $item)
+                <span class="me-2">{{$item->title }}</span>
+            @endforeach
+        </p>
 
         <a class="btn btn-success mt-3" href=" {{ route('admin.profiles.edit', auth()->user()->id) }}">edit profile</a>
 
