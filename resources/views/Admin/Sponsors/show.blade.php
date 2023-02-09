@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2>Singolo sponsor</h2>
+    <div class="container mt-5">
+        <h2>Singolo sponsor</h2>
+    </div>
 @endsection

@@ -5,10 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Specialization;
 use App\Models\User;
-use App\Models\UserDetail;
-use Faker\Provider\UserAgent;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpKernel\Profiler\Profile;
+
 
 class ProfileController extends Controller
 {
@@ -44,10 +42,5 @@ class ProfileController extends Controller
         }
 
         return redirect()->route('admin.profiles.show', $profile->id);
-
-
-        // ----------------
-
-
     }
 }

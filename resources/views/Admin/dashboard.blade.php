@@ -12,8 +12,6 @@
                         <li><a class="text-white text-decoration-none fw-bold"
                                 href="{{ route('admin.sponsor') }}">sponsors</a></li>
                         <li><a class="text-white text-decoration-none fw-bold"
-                                href="{{ route('admin.specialization') }}">Specialization</a></li>
-                        <li><a class="text-white text-decoration-none fw-bold"
                                 href="{{ route('admin.message') }}">message</a></li>
                         <li><a class="text-white text-decoration-none fw-bold"
                                 href="{{ route('admin.feedback') }}">feedback</a></li>

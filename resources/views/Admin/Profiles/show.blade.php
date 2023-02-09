@@ -11,7 +11,7 @@
         <p>Description: {{ $profile->user_detail?->description }}</p>
         <p>Specialization:
             @foreach ($profile->specializations as $item)
-                <span class="me-2">{{$item->title }}</span>
+                <span class="me-2">{{ $item->title }}</span>
             @endforeach
         </p>
 

@@ -28,8 +28,6 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('/profiles', ProfileController::class)->except('destroy', 'create', 'store', 'index');
-    
-    Route::get('/specialization', [SpecializationController::class, 'index'])->name('specialization');
 
     Route::get('/sponsors', [SponsorController::class, 'index'])->name('sponsor');
     Route::get('/sponsors/{sponsor}', [SponsorController::class, 'show'])->name('sponsor.show');
