@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2>Edit Profile</h2>
+<div class="container mt-5">
+    @foreach ($user as $doc)
+        
+    @endforeach
+    <h2>Edit Profile {{ $doc->name }}</h2>
+</div>
 @endsection
