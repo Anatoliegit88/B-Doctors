@@ -3,6 +3,12 @@
 @section('content')
     <div class="container mt-5">
 
+        @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+        @endif
+
         <h2>{{ $profile->name }} {{ $profile->surname }}</h2>
         <p>{{ $profile->email }}</p>
         <p>Phone: {{ $profile->user_detail?->phone }}</p>

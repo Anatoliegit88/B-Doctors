@@ -48,7 +48,7 @@ class ProfileController extends Controller
             $data['curriculum'] = $cv_path;       
         };
 
-        $profile->user_detail()->updateOrCreate([
+        $profile->user_detail()->update([
             'phone' => $data['phone'],
             'performance' => $data['performance'],
             'address' => $data['address'],
@@ -61,6 +61,7 @@ class ProfileController extends Controller
                 'photo' => $data['photo'],
             ]);
         }
+
         if ($request->hasFile('curriculum')){
 
             $profile->user_detail()->update([
@@ -74,6 +75,6 @@ class ProfileController extends Controller
             $profile->specializations()->detach();
         }
 
-        return redirect()->route('admin.profiles.show', $profile->id);
+        return redirect()->route('admin.profiles.show', $profile->id)->with('message', 'profile updated!');
     }
 }

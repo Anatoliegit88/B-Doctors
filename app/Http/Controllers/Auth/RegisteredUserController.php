@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Specialization;
+use App\Models\UserDetail;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -37,7 +38,8 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['nullable'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'specialization' => ['nullable'],
+            'specialization' => ['required'],
+            'address' => ['required'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -45,8 +47,13 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'surname' => $request->surname,
             'email' => $request->email,
-            'slug' => Str::slug($request->name),
+            'slug' => Str::slug($request->name . '-' . $request->surname),
             'password' => Hash::make($request->password),
+        ]);
+
+        UserDetail::create([
+            'user_id' => $user->id,
+            'address' => $request->address,
         ]);
 
         if($request->has('specialization')) {

@@ -15,7 +15,8 @@ class UserDetail extends Model
         'phone',
         'performance',
         'address',
-        'description'
+        'description',
+        'user_id'
     ];
 
     public function user()
