@@ -7,7 +7,7 @@ use App\Models\Specialization;
 use App\Models\User;
 use App\Models\UserDetail;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -27,6 +27,11 @@ class ProfileController extends Controller
     {
         $data = $request->all();
         $profile->update($data);
+
+        if($request->hasFile('photo')){
+            $img_path = Storage::put('images', $data['photo']); 
+            $data['photo'] = $img_path;       
+        }
 
         $profile->user_detail()->updateOrCreate([
             'phone' => $data['phone'],
