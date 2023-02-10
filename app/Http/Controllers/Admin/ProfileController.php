@@ -37,7 +37,9 @@ class ProfileController extends Controller
                 Storage::delete($profile->user_detail->photo);
             }
             $img_path = Storage::put('images', $data['photo']); 
-            $data['photo'] = $img_path;       
+            $data['photo'] = $img_path; 
+            
+            $profile->user_detail()->update(['photo' => $data['photo']]);
         };
 
         if($request->hasFile('curriculum')){
@@ -45,7 +47,9 @@ class ProfileController extends Controller
                 Storage::delete($profile->user_detail->curriculum);
             }
             $cv_path = Storage::put('Curriculum', $data['curriculum']); 
-            $data['curriculum'] = $cv_path;       
+            $data['curriculum'] = $cv_path; 
+            
+            $profile->user_detail()->update(['curriculum' => $data['curriculum'] ]);
         };
 
         $profile->user_detail()->update([
@@ -54,20 +58,6 @@ class ProfileController extends Controller
             'address' => $data['address'],
             'description' => $data['description'],
         ]);
-
-        if ($request->hasFile('photo')) {
-
-            $profile->user_detail()->update([
-                'photo' => $data['photo'],
-            ]);
-        }
-
-        if ($request->hasFile('curriculum')){
-
-            $profile->user_detail()->update([
-                'curriculum' => $data['curriculum']
-            ]);
-        }
 
         if ($request->has('specializations')) {
             $profile->specializations()->sync($request->specializations);
