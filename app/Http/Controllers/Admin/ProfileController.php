@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Specialization;
 use App\Models\User;
+use App\Models\UserDetail;
 use Illuminate\Http\Request;
 
 
@@ -24,11 +25,10 @@ class ProfileController extends Controller
 
     public function update(Request $request, User $profile)
     {
-
         $data = $request->all();
         $profile->update($data);
 
-        $profile->user_detail()->update([
+        $profile->user_detail()->updateOrCreate([
             'phone' => $data['phone'],
             'performance' => $data['performance'],
             'address' => $data['address'],

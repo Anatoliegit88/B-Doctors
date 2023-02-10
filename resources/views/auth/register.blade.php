@@ -45,7 +45,7 @@
                                 </div>
                             </div>
 
-                            <div class="mb-4 row">
+                            <div class="mb-2 row">
                                 <label for="specialization"
                                     class="col-md-4 col-form-label text-md-right">{{ __('specialization') }}</label>
 
@@ -60,6 +60,10 @@
                                             </option>
                                         @endforeach
                                     </select>
+
+                                    <div class="text-center">
+                                        <small class="text-muted">you will be able to add more specializations on your profile</small>
+                                    </div>
 
                                     @error('specialization')
                                         <span class="invalid-feedback" role="alert">
