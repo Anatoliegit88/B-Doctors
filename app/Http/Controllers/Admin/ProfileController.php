@@ -25,10 +25,14 @@ class ProfileController extends Controller
 
     public function update(Request $request, User $profile)
     {
+    
         $data = $request->all();
         $profile->update($data);
 
         if($request->hasFile('photo')){
+            if ($profile->user_detail->photo){
+                Storage::delete($profile->user_detail->photo);
+            }
             $img_path = Storage::put('images', $data['photo']); 
             $data['photo'] = $img_path;       
         }
@@ -36,6 +40,7 @@ class ProfileController extends Controller
         $profile->user_detail()->updateOrCreate([
             'phone' => $data['phone'],
             'performance' => $data['performance'],
+            'photo' => $data['photo'],
             'address' => $data['address'],
             'description' => $data['description'],
         ]);

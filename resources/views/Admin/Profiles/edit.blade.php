@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mt-5">
         @foreach ($user as $doc)
-            <form action="{{ route('admin.profiles.update', auth()->user()->id) }}" method="POST">
+            <form action="{{ route('admin.profiles.update', auth()->user()->id) }}" enctype="multipart/form-data" method="POST">
                 @csrf
                 @method('PUT')
                 <div>
