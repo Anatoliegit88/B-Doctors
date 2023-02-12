@@ -11,7 +11,8 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::with('user_detail', 'specializations')->get();
+
         return response()->json([
             'success' => true,
             'results' => $users
@@ -20,13 +21,11 @@ class UserController extends Controller
 
     public function show($slug)
     {
-        $user = User::where('slug', $slug)->first();;
-        $users_details = UserDetail::all();
+        $user = User::with('user_detail', 'specializations')->get()->where('slug', $slug)->first();
         if ($user) {
             return response()->json([
                 'success' => true,
-                'user' => $user,
-                'details' => $users_details
+                'user' => $user
             ]);
         } else {
             return response()->json([
