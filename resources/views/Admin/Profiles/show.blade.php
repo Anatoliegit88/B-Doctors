@@ -4,9 +4,9 @@
     <div class="container mt-5">
 
         @if (session('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
-        </div>
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
         @endif
 
         <h2>{{ $profile->name }} {{ $profile->surname }}</h2>
