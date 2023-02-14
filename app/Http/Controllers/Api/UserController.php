@@ -13,17 +13,32 @@ class UserController extends Controller
     {
 
         $specialization = Specialization::all();
+        $id = $request->specialization_id;
+        $vote = $request->vote;
 
-        if ($request->specialization_id) {
+        if ($request->specialization_id && $request->vote) {
 
-            $id = $request->specialization_id;
+            $users1 = User::whereHas('specializations', function ($q) use($id) {
+                $q->where('id', $id);
+            })->withAvg('feedback', 'vote' )->with('user_detail', 'specializations', 'feedback')->get();
+
+            $users = $users1->where('feedback_avg_vote', '>=', $vote);
+
+        } else if ($request->specialization_id) {
+
             $users = User::whereHas('specializations', function ($q) use($id) {
                 $q->where('id', $id);
-            })->with('user_detail', 'specializations', 'feedback')->get();
+            })->withAvg('feedback', 'vote' )->with('user_detail', 'specializations', 'feedback')->get();
+
+        } else if ($request->vote) {
+    
+            $users1 = User::with('user_detail', 'specializations', 'feedback')->withAvg('feedback', 'vote' )->get();
+            $users = $users1->where('feedback_avg_vote', '>=', $vote);
 
         } else {
 
-            $users = User::with('user_detail', 'specializations', 'feedback')->get();
+            $users = User::with('user_detail', 'specializations', 'feedback')->withAvg('feedback', 'vote' )->get();
+            
         }
 
         return response()->json([
