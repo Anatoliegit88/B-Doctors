@@ -3,18 +3,24 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Specialization;
 use App\Models\User;
-use App\Models\UserDetail;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     public function index(Request $request)
     {
-        if($request->test) {
 
-            $users = User::with('specializations', 'user_detail', 'feedback')->where('specializations.id', $request->test)->get();
-            
+        $specialization = Specialization::all();
+
+        if ($request->specialization_id) {
+
+            $id = $request->specialization_id;
+            $users = User::whereHas('specializations', function ($q) use($id) {
+                $q->where('id', $id);
+            })->with('user_detail', 'specializations', 'feedback')->get();
+
         } else {
 
             $users = User::with('user_detail', 'specializations', 'feedback')->get();
@@ -22,7 +28,7 @@ class UserController extends Controller
 
         return response()->json([
             'success' => true,
-            'results' => $users
+            'results' => ['user' =>$users, 'specializations' => $specialization]
         ]);
     }
 
