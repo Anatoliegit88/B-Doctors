@@ -60,7 +60,7 @@ class UserController extends Controller
 
         else if ($request->feedback_num) {
     
-        $users1 = User::with('user_detail', 'specializations', 'feedback')->withCount('feedback')->get();
+        $users1 = User::with('user_detail', 'specializations', 'feedback')->withAvg('feedback', 'vote' )->withCount('feedback')->get();
         $users = $users1->where('feedback_count' , '>=' , $request->feedback_num)->where('feedback_num' , '<=' , $request->feedback_num-5 );
 
          }
