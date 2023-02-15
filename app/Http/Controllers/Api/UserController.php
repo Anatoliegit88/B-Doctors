@@ -23,7 +23,7 @@ class UserController extends Controller
             })->withAvg('feedback', 'vote' )->withCount('feedback')->with('user_detail', 'specializations', 'feedback')->get();
 
 
-            $users = $users1->where('feedback_avg_vote', '>=', $vote)->where('feedback_count' , '>=' , $request->feedback_num);
+            $users = $users1->where('feedback_avg_vote', '>=', $vote)->where('feedback_count' , '>' , $request->feedback_num);
 
 
         }else if ($request->specialization_id && $request->vote) {
@@ -38,10 +38,10 @@ class UserController extends Controller
 
             $users1 = User::whereHas('specializations', function ($q) use($id) {
                 $q->where('id', $id);
-            })->withCount('feedback')->with('user_detail', 'specializations', 'feedback')->get();
+            })->withAvg('feedback', 'vote' )->withCount('feedback')->with('user_detail', 'specializations', 'feedback')->get();
 
 
-            $users = $users1->where('feedback_count' , '>=' , $request->feedback_num);
+            $users = $users1->where('feedback_count' , '>' , $request->feedback_num);
             
          }
 
@@ -61,7 +61,7 @@ class UserController extends Controller
         else if ($request->feedback_num) {
     
         $users1 = User::with('user_detail', 'specializations', 'feedback')->withAvg('feedback', 'vote' )->withCount('feedback')->get();
-        $users = $users1->where('feedback_count' , '>=' , $request->feedback_num)->where('feedback_num' , '<=' , $request->feedback_num-5 );
+        $users = $users1->where('feedback_count' , '>' , $request->feedback_num);
 
          }
         else {
