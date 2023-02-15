@@ -63,7 +63,7 @@ class UserController extends Controller
 
     public function show($slug)
     {
-        $user = User::with('user_detail', 'specializations')->get()->where('slug', $slug)->first();
+        $user = User::with('user_detail', 'specializations', 'feedback')->where('slug', $slug)->first();
         if ($user) {
             return response()->json([
                 'success' => true,
