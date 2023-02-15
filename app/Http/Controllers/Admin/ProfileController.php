@@ -27,6 +27,16 @@ class ProfileController extends Controller
     public function update(Request $request, User $profile)
     {
     
+       $request->validate([
+        'name' => ['required', 'string', 'max:255'],
+        'surname' => ['required' , 'nullable'],
+        'email' => ['required', 'string', 'email', 'max:255'],
+        'specialization' => ['required | min:1'],
+        'address' => ['required'],
+       ]); 
+
+
+
         $data = $request->all();
         $data['slug'] = Str::slug($data['name'] . '-' . $data['surname']);
         $profile->update($data);
