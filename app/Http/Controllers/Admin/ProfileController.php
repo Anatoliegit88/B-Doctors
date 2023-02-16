@@ -44,8 +44,6 @@ class ProfileController extends Controller
             'specializations' => ['required', 'min:1']
         ]);
 
-
-
         $data['slug'] = Str::slug($data['name'] . '-' . $data['surname']);
         $profile->update($data);
 

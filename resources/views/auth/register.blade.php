@@ -8,7 +8,7 @@
                     <div class="card-header">{{ __('Register') }}</div>
 
                     <div class="card-body">
-                        <form  id="register-form" method="POST" action="{{ route('register') }}">
+                        <form id="register-form" method="POST" action="{{ route('register') }}">
                             @csrf
 
                             <div class="mb-4 row">
@@ -62,7 +62,8 @@
                                     </select>
 
                                     <div class="text-center">
-                                        <small class="text-muted">you will be able to add more specializations on your profile</small>
+                                        <small class="text-muted">you will be able to add more specializations on your
+                                            profile</small>
                                     </div>
 
                                     @error('specialization')
