@@ -89,7 +89,7 @@
                     @endforeach
                 </div>
 
-                <button type="submit" class="btn btn-success mt-4">Save</button>
+                <button type="submit-edit" class="btn btn-success mt-4">Save</button>
 
             </form>
         @endforeach
