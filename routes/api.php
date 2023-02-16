@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\api\FeedbackController;
+use App\Http\Controllers\api\MessageController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,3 +23,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/profiles', [UserController::class, 'index']);
 Route::get('profiles/{slug}', [UserController::class, 'show']);
+Route::post('messages', [MessageController::class, 'store']);
+Route::post('feedback', [FeedbackController::class, 'store']);
