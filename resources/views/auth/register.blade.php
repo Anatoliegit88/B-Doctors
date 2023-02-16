@@ -132,7 +132,7 @@
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
                                         name="password_confirmation" required autocomplete="new-password">
-                                    <p id="pw-error" class="d-none text-danger">le password non sono uguali</p>
+                                    <p id="pw-error" class="d-none text-danger">the passwords doesn't match</p>
                                 </div>
                             </div>
 
@@ -149,4 +149,36 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById("submit-registration").addEventListener("click", function(evt) {
+
+            let pw = document.getElementById("password");
+            let pwConfirm = document.getElementById("password-confirm");
+            let pwError = document.getElementById("pw-error");
+
+            if (pw.value === pwConfirm.value) {
+                pwError.classList.add("d-none");
+            } else {
+                pwError.classList.remove("d-none");
+                evt.preventDefault();
+            }
+
+        });
+
+        document.getElementById("submit-edit").addEventListener("click", function(evt) {
+
+            let pw = document.getElementById("password");
+            let pwConfirm = document.getElementById("password-confirm");
+            let pwError = document.getElementById("pw-error");
+
+            if (pw.value === pwConfirm.value) {
+                pwError.classList.add("d-none");
+            } else {
+                pwError.classList.remove("d-none");
+                evt.preventDefault();
+            }
+
+        });
+    </script>
 @endsection
