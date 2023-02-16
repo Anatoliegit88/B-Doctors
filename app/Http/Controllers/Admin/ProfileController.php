@@ -32,8 +32,8 @@ class ProfileController extends Controller
         }
 
         $data = $request->validate([
-            'name' => ['required', 'string', 'max:10'],
-            'surname' => ['required'],
+            'name' => ['required', 'string', 'max:255'],
+            'surname' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'address' => ['required'],
             'phone' => ['nullable'],
