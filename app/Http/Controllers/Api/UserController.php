@@ -27,8 +27,10 @@ class UserController extends Controller
             ->get();
 
         $notSponsoredUser = User::leftJoin('sponsor_user', 'users.id', '=', 'sponsor_user.user_id')
-            ->where('expiration_date', '<', Carbon::now())
-            ->orWherenull('expiration_date')
+            ->where(function ($query) {
+                $query->where('expiration_date', '<', Carbon::now())
+                      ->orWhereNull('expiration_date');
+            })
             ->with('user_detail', 'specializations', 'feedback')
             ->withCount('feedback')
             ->withAvg('feedback', 'vote')
