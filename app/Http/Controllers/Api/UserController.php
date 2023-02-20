@@ -26,11 +26,10 @@ class UserController extends Controller
             ->withAvg('feedback', 'vote')
             ->get();
 
+        $sponsoredUserIds = $sponsoredUser->pluck('id')->toArray();
+
         $notSponsoredUser = User::leftJoin('sponsor_user', 'users.id', '=', 'sponsor_user.user_id')
-            ->where(function ($query) {
-                $query->where('expiration_date', '<', Carbon::now())
-                      ->orWhereNull('expiration_date');
-            })
+            ->whereNotIn('users.id', $sponsoredUserIds)
             ->with('user_detail', 'specializations', 'feedback')
             ->withCount('feedback')
             ->withAvg('feedback', 'vote')
@@ -49,9 +48,9 @@ class UserController extends Controller
                 })
                 ->get();
 
-                $notSponsoredUser = User::whereHas('specializations', function ($q) use ($specSlug) {
-                    $q->where('slug', $specSlug);
-                })
+            $notSponsoredUser = User::whereHas('specializations', function ($q) use ($specSlug) {
+                $q->where('slug', $specSlug);
+            })
                 ->leftJoin('sponsor_user', 'users.id', '=', 'sponsor_user.user_id')
                 ->where(function ($query) {
                     $query->where('expiration_date', '<', Carbon::now())
@@ -76,7 +75,7 @@ class UserController extends Controller
             $notSponsoredUser = $notSponsoredUser->where('feedback_count', '>', $request->feedback_num);
         }
 
-        $users = [...$sponsoredUser, ...$notSponsoredUser];
+        $users = $sponsoredUser->merge($notSponsoredUser);
 
         return response()->json([
             'success' => true,
