@@ -8,6 +8,7 @@ use App\Models\User;
 use Braintree\Gateway;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SponsorController extends Controller
 {
@@ -19,47 +20,28 @@ class SponsorController extends Controller
 
     public function show(Sponsor $sponsor)
     {
-        $gateway = new Gateway([
-            'environment' => env('BRAINTREE_ENVIRONMENT'),
-            'merchantId' => env('BRAINTREE_MERCHANT_ID'),
-            'publicKey' => env('BRAINTREE_PUBLIC_KEY'),
-            'privateKey' => env('BRAINTREE_PRIVATE_KEY'),
-        ]);
+        $userSponsor = Auth::user()->sponsors;
+        $activeSponsor = 0;
+        foreach ($userSponsor as $userSponsor) {
 
-        $token = $gateway->clientToken()->generate();
-        return view('Admin.Sponsors.show', compact('sponsor', 'token'));
+            if ($userSponsor->pivot->expiration_date >= Carbon::now()) {
+                $activeSponsor++;
+            };
+        }
+
+        if ($activeSponsor === 0) {
+
+            $gateway = new Gateway([
+                'environment' => env('BRAINTREE_ENVIRONMENT'),
+                'merchantId' => env('BRAINTREE_MERCHANT_ID'),
+                'publicKey' => env('BRAINTREE_PUBLIC_KEY'),
+                'privateKey' => env('BRAINTREE_PRIVATE_KEY'),
+            ]);
+
+            $token = $gateway->clientToken()->generate();
+            return view('Admin.Sponsors.show', compact('sponsor', 'token'));
+        } else {
+            return redirect()->back()->with('message', 'you already have an active sponsor, please wait till its over');
+        }
     }
-
-    public function store(Request $sponsor)
-    {
-
-        $user = auth()->user();
-
-
-        if ($sponsor->id == 1) {
-            $date = Carbon::now()->addHours(24);
-        }
-        if ($sponsor->id == 2) {
-            $date = Carbon::now()->addHours(72);
-        }
-
-        if ($sponsor->id == 3) {
-            $date = Carbon::now()->addHours(144);
-
-        }
-
-        $user->sponsors()->attach(
-
-            $sponsor->id,
-            ['expiration_date' => $date]
-
-        );
-
-
-        return redirect()->route('admin.profiles.show', auth()->user()->id)->with('message', 'sponsor bought !!');
-
-    }
-
-
-
 }

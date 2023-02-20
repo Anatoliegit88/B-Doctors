@@ -2,11 +2,6 @@
 
 @section('content')
     <div class="container mt-5">
-        @if (session()->has('success_message'))
-            <div class="alert alert-success">
-                {{ session()->get('success_message') }}
-            </div>
-        @endif
 
         @if (count($errors) > 0)
             <div class="alert alert-danger">
@@ -20,19 +15,19 @@
 
         <h2>{{ $sponsor->title }}</h2>
         <p>{{ $sponsor->description }}</p>
-        <p> a soli {{ $sponsor->price }} €</p>
 
         <form action="{{ route('admin.sponsor.store', $sponsor) }}" method="POST" id="payment-form">
             @csrf
-           
+
             <input class="d-none" type="integer" value="{{ $sponsor->id }}" id="id" name="id">
 
             <section>
                 <label for="amount">
-                    <span class="input-label">Amount</span>
+                    <span class="input-label">Price:</span>
                     <div class="input-wrapper amount-wrapper">
-                        <input id="amount" name="amount" type="tel" min="1" placeholder="Amount"
-                            value="10">
+                        <div id="amount" name="amount">
+                            {{ $sponsor->price }} €
+                        </div>
                     </div>
                 </label>
 

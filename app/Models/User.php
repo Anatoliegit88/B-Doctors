@@ -67,6 +67,6 @@ class User extends Authenticatable
 
     public function sponsors()
     {
-        return $this->belongsToMany(Sponsor::class);
+        return $this->belongsToMany(Sponsor::class)->withPivot('expiration_date');
     }
 }

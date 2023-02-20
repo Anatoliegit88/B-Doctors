@@ -9,9 +9,10 @@ use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
-    public function store(Request $request){
- 
-        
+    public function store(Request $request)
+    {
+
+
         $gateway = new Gateway([
             'environment' => env('BRAINTREE_ENVIRONMENT'),
             'merchantId' => env('BRAINTREE_MERCHANT_ID'),
@@ -19,9 +20,18 @@ class PaymentController extends Controller
             'privateKey' => env('BRAINTREE_PRIVATE_KEY'),
         ]);
 
-        $amount = $request->amount;
+        $amount = '';
+        if ($request->id == 1) {
+            $amount = 2.99;
+        }
+        if ($request->id == 2) {
+            $amount = 5.99;
+        }
+        if ($request->id == 3) {
+            $amount = 9.99;
+        }
         $nonce = $request->payment_method_nonce;
-    
+
         $result = $gateway->transaction()->sale([
             'amount' => $amount,
             'paymentMethodNonce' => $nonce,
@@ -34,45 +44,43 @@ class PaymentController extends Controller
                 'submitForSettlement' => true
             ]
         ]);
-    
+
         if ($result->success) {
             $transaction = $result->transaction;
-           
-            
-        $user = auth()->user();
 
 
-        if ($request->id == 1) {
-            $date = Carbon::now()->addHours(24);
-        }
-        if ($request->id == 2) {
-            $date = Carbon::now()->addHours(72);
-        }
+            $user = auth()->user();
 
-        if ($request->id == 3) {
-            $date = Carbon::now()->addHours(144);
 
-        }
+            if ($request->id == 1) {
+                $date = Carbon::now()->addHours(24);
+            }
+            if ($request->id == 2) {
+                $date = Carbon::now()->addHours(72);
+            }
 
-        $user->sponsors()->attach(
+            if ($request->id == 3) {
+                $date = Carbon::now()->addHours(144);
+            }
 
-            $request->id,
-            ['expiration_date' => $date]
+            $user->sponsors()->attach(
 
-        );
-    
-            return back()->with('success_message', 'Transaction successful. The ID is:'. $transaction->id);
+                $request->id,
+                ['expiration_date' => $date]
+
+            );
+
+            return redirect()->route('admin.sponsor')->with('success_message', 'Transaction successful. The ID is:' . $transaction->id);
         } else {
             $errorString = "";
-    
+
             foreach ($result->errors->deepAll() as $error) {
                 $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
             }
-    
+
             // $_SESSION["errors"] = $errorString;
             // header("Location: index.php");
-            return back()->withErrors('An error occurred with the message: '.$result->message);
+            return back()->withErrors('An error occurred with the message: ' . $result->message);
         }
-
     }
 }
