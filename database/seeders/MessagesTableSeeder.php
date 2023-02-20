@@ -20,7 +20,7 @@ class MessagesTableSeeder extends Seeder
             $message = new Message();
             $message->name = $faker->name();
             $message->email = $faker->email();
-            $message->text = $faker->text();
+            $message->text = $faker->text(400);
             $message->user_id = $faker->numberBetween(1,10); 
             $message->save();
         }
