@@ -1,6 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h2>Singolo messagio</h2>
-    <h5>{{ $message->name }}</h5>
+    <div class="container mt-4">
+        <h5>{{ $message->name }} <span class="message-email">( {{ $message->email }} )</span> </h5>
+        <p>{{ $message->text }}</p>
+        <p>{{ $message->created_at }}</p>
+    </div>
 @endsection
