@@ -22,7 +22,6 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
 
             $table->dateTime('expiration_date');
-            $table->primary(['sponsor_id', 'user_id']);
            
         });
     }

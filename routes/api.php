@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\api\FeedbackController;
 use App\Http\Controllers\api\MessageController;
+use App\Http\Controllers\Api\SponsorController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;

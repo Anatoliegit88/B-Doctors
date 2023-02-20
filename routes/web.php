@@ -3,11 +3,11 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FeedbackController;
 use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\ProfileController;
-use App\Http\Controllers\Admin\SpecializationController;
 use App\Http\Controllers\Admin\SponsorController;
 use Illuminate\Support\Facades\Route;
-use Symfony\Component\HttpKernel\Profiler\Profile;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +30,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     Route::resource('/profiles', ProfileController::class)->except('destroy', 'create', 'store', 'index');
 
     Route::get('/sponsors', [SponsorController::class, 'index'])->name('sponsor');
+    Route::post('/sponsors' ,  [PaymentController::class, 'store'])->name('sponsor.store'); 
     Route::get('/sponsors/{sponsor}', [SponsorController::class, 'show'])->name('sponsor.show');
 
     Route::get('/feedback', [FeedbackController::class, 'index'])->name('feedback');
