@@ -16,7 +16,7 @@ class UserController extends Controller
     {
 
         $specialization = Specialization::all();
-        $id = $request->specialization_id;
+        $specSlug = $request->specialization_slug;
         $vote = $request->vote;
 
         $sponsoredUser = User::leftJoin('sponsor_user', 'users.id', '=', 'sponsor_user.user_id')
@@ -37,20 +37,20 @@ class UserController extends Controller
             ->orderBy(DB::raw('RAND()'))
             ->get();
 
-        if ($request->specialization_id) {
+        if ($request->specialization_slug) {
 
             $sponsoredUser = User::leftJoin('sponsor_user', 'users.id', '=', 'sponsor_user.user_id')
                 ->whereDate('expiration_date', '>=', Carbon::now())
                 ->with('user_detail', 'specializations', 'feedback')
                 ->withCount('feedback')
                 ->withAvg('feedback', 'vote')
-                ->whereHas('specializations', function ($q) use ($id) {
-                    $q->where('id', $id);
+                ->whereHas('specializations', function ($q) use ($specSlug) {
+                    $q->where('slug', $specSlug);
                 })
                 ->get();
 
-                $notSponsoredUser = User::whereHas('specializations', function ($q) use ($id) {
-                    $q->where('id', $id);
+                $notSponsoredUser = User::whereHas('specializations', function ($q) use ($specSlug) {
+                    $q->where('slug', $specSlug);
                 })
                 ->leftJoin('sponsor_user', 'users.id', '=', 'sponsor_user.user_id')
                 ->where(function ($query) {
