@@ -104,6 +104,13 @@
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column text-uppercase ms-2 mt-4">
 
+                            <li class="nav-item mt-2 {{ strpos(Route::currentRouteName(), 'dashboard') ? 'bg-light' : '' }}">
+                                <a class="nav-link text-dark text-decoration-none" href="{{ route('admin.dashboard', auth()->user()->id) }}">
+                                    <i class="me-3 fa-solid fa-table-columns"></i>
+                                    dashboard
+                                </a>
+                            </li>
+
                             <li class="nav-item mt-2 {{ strpos(Route::currentRouteName(), 'profiles') ? 'bg-light' : '' }}">
                                 <a class="nav-link text-dark text-decoration-none" href="{{ route('admin.profiles.show', auth()->user()->id) }}">
                                     <i class="me-3 fa-solid fa-user"></i>
