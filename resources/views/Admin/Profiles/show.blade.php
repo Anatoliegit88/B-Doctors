@@ -11,7 +11,7 @@
 
         <div class="row justify-content-center mb-3">
 
-            <div class="bg-doc col-8 d-lg-flex justify-content-around p-3 bd-radius">
+            <div class="bg-doc col-8 d-lg-flex justify-content-around py-4 bd-radius">
                 <div class="img-container mx-auto mx-lg-0">
                     <img src="{{ asset('storage/' . $profile->user_detail->photo) }}" alt="">
                 </div>
@@ -39,13 +39,13 @@
         </div>
 
 
-        <div class="row justify-content-center mb-3">
+        <div class="row justify-content-center bg-doc bd-radius col-8 mx-auto mb-3">
 
-            <div class="col-8 d-flex justify-content-center bg-doc py-3 bd-radius">
-
+            <div class="d-flex justify-content-center  py-3 bd-radius">
+                
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 ">
                     @foreach ($profile->specializations as $spec)
-                        <div class="col text-center">
+                        <div class="col text-center fw-bold">
                             #{{ $spec->title }}
                         </div>
                     @endforeach
@@ -56,11 +56,14 @@
         </div>
 
 
-        <div class="row justify-content-center mb-3">
-            <div class="col-8 bg-doc p-3 bd-radius">
-                <span>
+        <div class="row justify-content-center  mb-3">
+            <div class="col-8 bg-doc px-3 py-5 bd-radius">
+                <div class="col-9 mx-auto">
+
+                    <h2 class="mb-3">Description:</h2>
+
                     {{ $profile->user_detail?->description }}
-                </span>
+                </div>
             </div>
         </div>
 
