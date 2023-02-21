@@ -25,10 +25,10 @@
     <div>
         <nav class="navbar navbar-expand-md navbar-light shadow-sm adm-header">
             <div class="container">
-                
-                    <img class="logo-img" src="http://127.0.0.1:8000/storage/images/logo.jpg" alt="">
-                    {{-- config('app.name', 'Laravel') --}}
-            
+
+                <img class="logo-img ms-1" src="http://127.0.0.1:8000/storage/images/logo.jpg" alt="">
+                {{-- config('app.name', 'Laravel') --}}
+
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -49,14 +49,26 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">LOGIN</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('REGISTER') }}</a>
                                 </li>
                             @endif
                         @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="http://localhost:5174">{{ __('HOME') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="http://localhost:5174/about-us">{{ __('ABOUT US') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="http://localhost:5174/services">{{ __('SERVICES') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="http://localhost:5174/contact">{{ __('CONTACT') }}</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
