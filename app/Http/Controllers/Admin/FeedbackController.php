@@ -14,8 +14,10 @@ class FeedbackController extends Controller
         return view('admin.feedback.index', compact('feedback'));
     }
 
-    public function show()
+    public function show(Feedback $feedback)
     {
-        return view('admin.feedback.show');
+        $id = $feedback->id;
+        $review = Feedback::find($id); 
+        return view('admin.feedback.show', compact('review'));
     }
 }
