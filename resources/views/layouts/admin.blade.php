@@ -100,9 +100,9 @@
             <div class="row h-100">
 
                 {{-- Sidebar --}}
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block nav-dash navbar-dark sidebar collapse">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-block nav-dash navbar-dark sidebar collapse">
                     <div class="position-sticky pt-3">
-                        <ul class="nav flex-column text-uppercase ps-2 mt-4">
+                        <ul class="nav  flex-md-column text-uppercase ps-2 mt-4">
 
                             <li class="nav-item mt-2 {{ strpos(Route::currentRouteName(), 'dashboard') ? 'bg-light' : '' }}">
                                 <a class="nav-link text-dark text-decoration-none" href="{{ route('admin.dashboard', auth()->user()->id) }}">
@@ -135,7 +135,9 @@
                             <li class="nav-item mt-2 {{ strpos(Route::currentRouteName(), 'feedback') ? 'bg-light' : '' }}">
                                 <a class="nav-link text-dark text-decoration-none" href="{{ route('admin.feedback') }}">
                                     <i class="pe-3 fa-regular fa-pen-to-square"></i>
-                                    feedback
+                                    <span class="">
+                                        feedback
+                                    </span>
                                 </a>
                             </li>
 
