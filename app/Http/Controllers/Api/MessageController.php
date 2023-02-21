@@ -9,6 +9,17 @@ use Illuminate\Support\Facades\Validator;
 
 class MessageController extends Controller
 {
+
+
+    public function index()
+    {
+        $messages = Message::where('user_id', auth()->user()->id)->get();
+
+        return view('api.messages.index', compact('messages'));
+        
+    }
+
+
     public function store(Request $request)
     {
         $data = $request->all();

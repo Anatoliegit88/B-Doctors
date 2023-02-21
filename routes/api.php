@@ -24,5 +24,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/profiles', [UserController::class, 'index']);
 Route::get('profiles/{slug}', [UserController::class, 'show']);
+Route::post('messages', [MessageController::class, 'index']);
 Route::post('messages', [MessageController::class, 'store']);
 Route::post('feedback', [FeedbackController::class, 'store']);

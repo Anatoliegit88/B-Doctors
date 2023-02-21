@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SponsorController;
+use App\Http\Controllers\Admin\StatisticController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -38,6 +39,8 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
 
     Route::get('/messages', [MessageController::class, 'index'])->name('message');
     Route::get('/messages/{message}', [MessageController::class, 'show'])->name('message.show');
+
+    Route::get('/statistics', [StatisticController::class, 'index'])->name('statistic');  
 });
 
 require __DIR__ . '/auth.php';

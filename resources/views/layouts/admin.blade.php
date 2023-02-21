@@ -19,16 +19,18 @@
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
+    @vite(['resources/js/mychart.js'])
+    
 </head>
 
 <body>
     <div>
         <nav class="navbar navbar-expand-md navbar-light shadow-sm adm-header">
             <div class="container">
-                
-                    <img class="logo-img" src="http://127.0.0.1:8000/storage/images/logo.jpg" alt="">
-                    {{-- config('app.name', 'Laravel') --}}
-            
+
+                <img class="logo-img" src="http://127.0.0.1:8000/storage/images/logo.jpg" alt="">
+                {{-- config('app.name', 'Laravel') --}}
+
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -97,6 +99,9 @@
                                     href="{{ route('admin.message') }}">message</a></li>
                             <li class="nav-item"><a class="nav-link text-white text-decoration-none fw-bold"
                                     href="{{ route('admin.feedback') }}">feedback</a></li>
+                            <li class="nav-item"><a class="nav-link text-white text-decoration-none fw-bold"
+                                    href="{{ route('admin.statistic') }}">statistics</a></li>
+
                         </ul>
                     </div>
                 </nav>
