@@ -10,7 +10,7 @@
                     <tr>
                         <th scope="col">Reviewer Name</th>
                         <th scope="col">Vote</th>
-                        <th scope="col">Created at</th>
+                        <th scope="col">Send at</th>
                         <th scope="col">Text</th>
                         <th scope="col">Info</th>
 

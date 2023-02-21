@@ -1,9 +1,15 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container mt-4">
-        <h5>{{ $message->name }} <span class="message-email">( {{ $message->email }} )</span> </h5>
-        <p>{{ $message->text }}</p>
-        <p>{{ $message->created_at }}</p>
-    </div>
-@endsection
+    <h2 class="text-center mt-3">Feedback of {{ $message->name }}</h2>
+    <div class="container mt-5">
+        <div class="row d-flex bg-doc rounded col-10 mx-auto justify-content-center text-center pt-3">
+
+            <h4 class="col-12">Send at</h4>
+            <p class="">{{ date('d-m-Y', strtotime($message->created_at)) }}</p>
+            <hr>
+            <h4 class="col-12">Text</h4>
+            <p>{{ $message->text }}</p>
+        </div>
+        <a href="{{ route('admin.message')}}"> <i class="fa-solid fa-circle-arrow-left fs-3"> </i> </a>
+    @endsection
