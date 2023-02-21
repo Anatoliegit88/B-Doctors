@@ -98,21 +98,39 @@
 
         <div class="container-fluid vh-100">
             <div class="row h-100">
-                {{-- Sidebar --}}
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block  nav-dash navbar-dark sidebar collapse">
-                    <div class="position-sticky pt-3">
-                        <ul class="nav flex-column">
-                            <li class="nav-item"><a class="nav-link text-white text-decoration-none fw-bold"
-                                    href="{{ route('admin.profiles.show', auth()->user()->id) }}"> Profile </a></li>
 
-                            <li class="nav-item"><a class="nav-link text-white text-decoration-none fw-bold"
-                                    href="{{ route('admin.sponsor') }}">sponsors</a></li>
-                            <li class="nav-item"><a class="nav-link text-white text-decoration-none fw-bold"
-                                    href="{{ route('admin.message') }}">message</a></li>
-                            <li class="nav-item"><a class="nav-link text-white text-decoration-none fw-bold"
-                                    href="{{ route('admin.feedback') }}">feedback</a></li>
-                            <li class="nav-item"><a class="nav-link text-white text-decoration-none fw-bold"
-                                    href="{{ route('admin.statistic') }}">statistics</a></li>
+                {{-- Sidebar --}}
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block  nav-dash  sidebar collapse">
+                    <div class="position-sticky pt-3">
+                        <ul class="nav flex-column text-uppercase ms-2 mt-4">
+
+                            <li class="nav-item mt-2 {{ strpos(Route::currentRouteName(), 'profiles') ? 'bg-light' : '' }}">
+                                <a class="nav-link text-dark text-decoration-none" href="{{ route('admin.profiles.show', auth()->user()->id) }}">
+                                    <i class="me-3 fa-solid fa-user"></i>
+                                    Profile
+                                </a>
+                            </li>
+
+                            <li class="nav-item mt-2 {{ strpos(Route::currentRouteName(), 'sponsor')? 'bg-light' : '' }}">
+                                <a class="nav-link text-dark text-decoration-none" href="{{ route('admin.sponsor') }}">
+                                    <i class="me-3 fa-solid fa-dollar-sign"></i>
+                                    sponsors
+                                </a>
+                            </li>
+
+                            <li class="nav-item mt-2 {{ strpos(Route::currentRouteName(), 'message') ? 'bg-light' : '' }}">
+                                <a class="nav-link text-dark text-decoration-none" href="{{ route('admin.message') }}">
+                                    <i class="me-3 fa-solid fa-message"></i>
+                                    message
+                                </a>
+                            </li>
+
+                            <li class="nav-item mt-2 {{ strpos(Route::currentRouteName(), 'feedback') ? 'bg-light' : '' }}">
+                                <a class="nav-link text-dark text-decoration-none" href="{{ route('admin.feedback') }}">
+                                    <i class="me-3 fa-regular fa-pen-to-square"></i>
+                                    feedback
+                                </a>
+                            </li>
 
                         </ul>
                     </div>
