@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-5">
-        <h2>Sponsors</h2>
+        <h2 class="text-center">Sponsors</h2>
 
         @if (session('message'))
             <div class="col-6 mx-auto text-center alert alert-danger">
@@ -16,14 +16,17 @@
             </div>
         @endif
 
-        <ul>
-            @foreach ($sponsors as $sponsor)
-                <li> Tittolo: {{ $sponsor->title }}</li>
-                <li> Descrizzione: <br> {{ $sponsor->description }}</li>
-                <li> Prezzo: {{ $sponsor->price }}</li>
-                <a class="btn btn-success mt-3" href="{{ route('admin.sponsor.show', $sponsor->id) }}">Info</a>
+        @foreach ($sponsors as $sponsor)
+        <div>
+            <ul>
+                <li> Title: {{ $sponsor->title }}</li>
+                <li> Description: <br> {{ $sponsor->description }}</li>
+                <li> Price: {{ $sponsor->price }}</li>
+                <a class="btn btn-success mt-3" href="{{ route('admin.sponsor.show', $sponsor->id) }}">Buy</a>
                 <hr>
-            @endforeach
-        </ul>
+            </ul>
+        </div>
+        @endforeach
+
     </div>
 @endsection
