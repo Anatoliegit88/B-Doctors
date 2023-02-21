@@ -20,17 +20,17 @@ class SponsorsTableSeeder extends Seeder
         $sponsors = [
            [
             'title' => 'Silver',
-            'price' => '2.99 ',
+            'price' => '2.99',
             'description' => 'With Silver sponsor you will get a full day on the sponsored doctors'
            ],
            [
             'title' => 'Gold',
-            'price' => '5.99 ',
+            'price' => '5.99',
             'description' => 'the Gold sponsor garants you will 3 full days on the sponsored doctors!'
            ],
            [
             'title' => 'Platinum',
-            'price' => '9.99 ',
+            'price' => '9.99',
             'description' => 'Platinum sponsor garants you will 6 full days on the sponsored doctors! you will appear for first on the search list.'
            ]
         ];

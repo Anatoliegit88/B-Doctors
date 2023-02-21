@@ -16,7 +16,7 @@ class SpecializationsTableSeeder extends Seeder
      */
     public function run()
     {
-       $spec = ['Cardiologist', 'Immunologist', 'Dermatologist', 'Nephrologists', 'Gastroenterologist', 'Urologists', 'Infectious disease', 'Ophthalmologists', 'Gynecologists', 'Endocrinologists',];
+       $spec = ['Cardiologist', 'Immunologist', 'Dermatologist', 'Nephrologist', 'Gastroenterologist', 'Urologist', 'Infectious disease', 'Ophthalmologist', 'Gynecologist', 'Endocrinologist',];
         for ($i = 0; $i < count($spec); $i++) {
             $specialization = new Specialization();
             $specialization->title = $spec[$i];
