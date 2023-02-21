@@ -7,6 +7,7 @@ use App\Models\Specialization;
 use App\Models\User;
 use App\Models\UserDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -44,7 +45,7 @@ class ProfileController extends Controller
             'specializations' => ['required', 'min:1']
         ]);
 
-        $data['slug'] = Str::slug($data['name'] . '-' . $data['surname']);
+        $data['slug'] = Str::slug($data['name'] . $data['surname'] . Auth::user()->id);
         $profile->update($data);
 
         //controll ii on request has any file to upload
