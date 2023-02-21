@@ -18,12 +18,24 @@
         @endif
 
         @foreach ($sponsors as $sponsor)
-                <div class="{{ strToLower($sponsor->title)}} rounded d-flex justify-content-between align-items-center py-3 pe-3 mt-3 col-8 mx-auto">
-                    <ul class="no-margin col-8">
-                        <li> Title: {{ $sponsor->title }}</li>
-                        <li> Description: <br> {{ $sponsor->description }}</li>
-                        <li> Price: {{ $sponsor->price }}</li>
-                    </ul>
+                <div class="{{ strToLower($sponsor->title)}} rounded d-flex justify-content-between align-items-center py-3 px-5 mt-3 col-8 mx-auto">
+                    <div class="col-8">
+                        <h2> {{ $sponsor->title }}</h2>
+                        @if ($sponsor->id === 1)
+                        <h6 class="mb-3">24 hours of sponrship!</h6>
+                        @elseif ($sponsor->id === 2)
+                        <h6 class="mb-3">72 hours of sponrship!</h6>
+                        @else
+                        <h6 class="mb-3">144 hours of sponrship!</h6>
+                        @endif
+                        <p>{{ $sponsor->description }}</p>
+                        <p> 
+                            Price: 
+                            <span class="fw-bold">
+                                ${{ $sponsor->price }}
+                            </span>
+                        </p>
+                    </div>
                     <a class="btn btn-primary mt-3" href="{{ route('admin.sponsor.show', $sponsor->id) }}">Buy</a>
                 </div>         
         @endforeach

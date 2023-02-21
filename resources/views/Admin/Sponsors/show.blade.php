@@ -13,33 +13,56 @@
             </div>
         @endif
 
-        <h2>{{ $sponsor->title }}</h2>
-        <p>{{ $sponsor->description }}</p>
+        <div class="col-6 mx-auto">
 
-        <form action="{{ route('admin.sponsor.store', $sponsor) }}" method="POST" id="payment-form">
-            @csrf
+            <div class="{{ strToLower($sponsor->title) }} rounded  py-3 px-5 mt-3">
+                <h2>{{ $sponsor->title }}</h2>
+                @if ($sponsor->id === 1)
+                    <h6 class="mb-3">24 hours of sponrship!</h6>
+                @elseif ($sponsor->id === 2)
+                    <h6 class="mb-3">72 hours of sponrship!</h6>
+                @else
+                    <h6 class="mb-3">144 hours of sponrship!</h6>
+                @endif
+                <p>{{ $sponsor->description }}</p>
+                <p>
+                    Price:
+                    <span class="fw-bold">
+                        ${{ $sponsor->price }}
+                    </span>
+                </p>
+            </div>
 
-            <input class="d-none" type="integer" value="{{ $sponsor->id }}" id="id" name="id">
 
-            <section>
-                <label for="amount">
-                    <span class="input-label">Price:</span>
-                    <div class="input-wrapper amount-wrapper">
-                        <div id="amount" name="amount">
-                            {{ $sponsor->price }} €
-                        </div>
+            <form action="{{ route('admin.sponsor.store', $sponsor) }}" method="POST" id="payment-form">
+                @csrf
+
+                <input class="d-none" type="integer" value="{{ $sponsor->id }}" id="id" name="id">
+
+                <section>
+                    {{-- <label for="amount">
+                            <span class="input-label">Price:</span>
+                            <div class="input-wrapper amount-wrapper">
+                                <div id="amount" name="amount">
+                                    {{ $sponsor->price }} €
+                                </div>
+                            </div>
+                        </label> --}}
+
+                    <div class="bt-drop-in-wrapper">
+                        <div id="bt-dropin"></div>
                     </div>
-                </label>
+                </section>
 
-                <div class="bt-drop-in-wrapper">
-                    <div id="bt-dropin"></div>
-                </div>
-            </section>
+                <input id="nonce" name="payment_method_nonce" type="hidden" />
+                <button class="button btn btn-primary" type="submit">buy!</button>
 
-            <input id="nonce" name="payment_method_nonce" type="hidden" />
-            <button class="button" type="submit"><span>Test Transaction</span></button>
+            </form>
 
-        </form>
+
+
+        </div>
+
     </div>
     <script src="https://js.braintreegateway.com/web/dropin/1.33.7/js/dropin.min.js"></script>
     <script>
