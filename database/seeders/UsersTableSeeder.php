@@ -22,13 +22,16 @@ class UsersTableSeeder extends Seeder
 
             $user = new User(); 
             $user->name = $faker->firstName(); 
-            $user->surname = $faker->lastName(); 
-            $user->slug = Str::slug($user->name . '-' . $user->surname);  
+            $user->surname = $faker->lastName();
+            $user->slug = Str::slug($user->name . $user->surname);
             $user->email = $faker->email(); 
             $user->email_verified_at = $faker->dateTime(); 
             $user->password = $faker->password(10,10);
             $user->save(); 
- 
+            $user->update([
+                'slug' => Str::slug($user->name . $user->surname . $user->id)
+            ]);  
+
             $user->specializations()->attach($i+1); 
         }
     }

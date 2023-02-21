@@ -47,8 +47,12 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'surname' => $request->surname,
             'email' => $request->email,
-            'slug' => Str::slug($request->name . '-' . $request->surname),
+            'slug' => Str::slug($request->name . $request->surname),
             'password' => Hash::make($request->password),
+        ]);
+
+        $user->update([
+            'slug' => Str::slug($user->name . $user->surname . $user->id),
         ]);
 
         UserDetail::create([

@@ -78,7 +78,7 @@ class UserController extends Controller
 
         return response()->json([
             'success' => true,
-            'results' => ['user' => $users, 'specializations' => $specialization]
+            'results' => ['user' => $users, 'specializations' => $specialization , 'sponsoredUsers' => $sponsoredUser]
         ]);
     }
 
