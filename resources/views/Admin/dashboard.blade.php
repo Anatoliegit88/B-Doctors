@@ -14,9 +14,12 @@
                             </div>
                         @endif
 
-                        <h4>
+                        <h4 class="text-center my-4">
                             Welcome Back DR. {{ Auth::user()->name }} {{Auth::user()->surname}}
                         </h4>
+
+                        <p class="ms-4">you have a total of {{$messages}} messages.</p>
+                        <p class="ms-4">you got {{$feedbacks}} feedbacks with an avegare vote of {{floor($avgVote)}}.</p>
                     </div>
                 </div>
             </div>
