@@ -4,32 +4,33 @@
     <div class="container mt-5">
 
 
-
-        <table class="table table-striped " style="background-color: #d5e9f4;">
-            <thead>
-                <tr>
-                    <th scope="col">Reviewer Name</th>
-                    <th scope="col">Vote</th>
-                    <th scope="col">Created at</th>
-                    <th scope="col">Text</th>
-                    <th scope="col">Info</th>
-
-                </tr>
-            </thead>
-            <tbody class="table-group-divider">
-
-                @foreach ($feedback as $review)
+        <div class="col-10 mx-auto">
+            <table class="table table-striped " style="background-color: #d5e9f4;">
+                <thead>
                     <tr>
-                        <td>{{ $review->reviewer_name }}</th>
-                        <td>{{ $review->vote }}</td>
-                        <td class=""> {{ $review->created_at }}</td>
-                        <td class="text-truncate" style="max-width: 150px;">{{ $review->review }}</td>
-                        <td>
-                            <a class="btn btn-success" href="{{ route('admin.feedback.show', $review) }}"> Info </a>
-                        </td>
+                        <th scope="col">Reviewer Name</th>
+                        <th scope="col">Vote</th>
+                        <th scope="col">Created at</th>
+                        <th scope="col">Text</th>
+                        <th scope="col">Info</th>
+
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody class="table-group-divider">
+
+                    @foreach ($feedback as $review)
+                        <tr>
+                            <td>{{ $review->reviewer_name }}</th>
+                            <td>{{ $review->vote }}</td>
+                            <td class=""> {{ date('d-m-Y' , strtotime($review->created_at) )}}</td>
+                            <td class="text-truncate" style="max-width: 150px;">{{ $review->review }}</td>
+                            <td>
+                                <a class="btn btn-primary" href="{{ route('admin.feedback.show', $review) }}"> Info </a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 @endsection
