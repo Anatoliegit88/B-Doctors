@@ -1,6 +1,6 @@
 .img-container {
-    width: 15rem;
-    height: 15rem;
+    max-width: 15rem;
+    max-height: 15rem;
 
 }
 
@@ -12,42 +12,8 @@
     border-radius: 10%;
 }
 
-.profile-container {
-    background-color: #d5eaf2;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+.bd-radius {
     border-radius: 15px;
 }
 
-.profile-img {
-    height: 1rem;
-}
 
-.doctor-description {
-    background-color: #d5eaf2;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    border-radius: 10px;
-    margin-bottom: 1rem;
-
-}
-
-.description-container {
-    width: 100%;
-}
-
-.row {
-    margin-left: 0;
-}
-
-.spec-container {
-
-    width: 100%;
-  
-}
-.spec {
-  background-color: #d5eaf2;
-  border-radius: 10px;
-  text-align: center;
-  font-size: 1.1rem;
-}

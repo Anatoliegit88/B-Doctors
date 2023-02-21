@@ -4,19 +4,19 @@
     <div class="container mt-5">
 
         @if (session('message'))
-            <div class=" col-9 mx-auto alert text-dark alert-primary">
+            <div class=" col-8 mx-auto alert text-dark alert-primary">
                 {{ session('message') }}
             </div>
         @endif
 
-        <div class="profile d-flex justify-content-center mt-5 mb-3">
-            <div
-                class="profile-container d-flex flex-column flex-md-row align-items-center justify-content-around col-11 col-md-9">
-                <div class="img-container">
+        <div class="row justify-content-center mb-3">
+
+            <div class="bg-doc col-8 d-lg-flex justify-content-around p-3 bd-radius">
+                <div class="img-container mx-auto mx-lg-0">
                     <img src="{{ asset('storage/' . $profile->user_detail->photo) }}" alt="">
                 </div>
                 <div class="info-container mt-3">
-                    <div class="text-center text-md-start">
+                    <div class="text-center text-lg-start">
                         <div>
                             <h5> {{ $profile->name }} {{ $profile->surname }}</h5>
                             <span class="doctor-email mb-2">
@@ -38,18 +38,26 @@
             </div>
         </div>
 
-        <div class="spec-container row justify-content-center mb-3">
-            <div class="spec col-11 col-md-9 d-flex flex-lg-row flex-column justify-content-center pt-2 pb-2">
-                @foreach ($profile->specializations as $spec)
-                <div class="me-3">
-                    <span class="fw-bold">#</span> {{ $spec->title }}
+
+        <div class="row justify-content-center mb-3">
+
+            <div class="col-8 d-flex justify-content-center bg-doc py-3 bd-radius">
+
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 " >
+                    @foreach ($profile->specializations as $spec)
+                        <div class="col text-center">
+                            #{{ $spec->title }}
+                        </div>
+                    @endforeach
+
                 </div>
-                @endforeach
+
             </div>
         </div>
 
-        <div class="description-container row justify-content-center">
-            <div class="col-11 col-md-9 px-5 doctor-description">
+
+        <div class="row justify-content-center mb-3">
+            <div class="col-8 bg-doc p-3 bd-radius">
                 <span>
                     {{ $profile->user_detail?->description }}
                 </span>
