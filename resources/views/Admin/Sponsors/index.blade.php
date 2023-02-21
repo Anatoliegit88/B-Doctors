@@ -1,8 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
+<h2 class="text-center mt-3">Sponsors</h2>
     <div class="container mt-5">
-        <h2 class="text-center">Sponsors</h2>
+ 
 
         @if (session('message'))
             <div class="col-6 mx-auto text-center alert alert-danger">
