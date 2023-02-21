@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        <div class="row justify-content-end mb-5">
+        <div class="row col-11 justify-content-end mb-5">
 
             <div class="d-flex justify-content-end">
                 <a class="btn btn-primary mt-3" href=" {{ route('admin.profiles.edit', auth()->user()->id) }}">edit
