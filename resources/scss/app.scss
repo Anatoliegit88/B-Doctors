@@ -22,19 +22,33 @@
     background-color: #d5e9f4;
 }
 
-.silver{
-    background-color: rgb(192,192,192);
+.silver {
+    background-color: rgb(192, 192, 192);
 }
 
-.gold{
-    background-color: rgb(255,215,0);
+.gold {
+    background-color: rgb(255, 215, 0);
 }
 
-.platinum{
-    background-color: 	rgb(229, 228, 226);
+.platinum {
+    background-color: rgb(229, 228, 226);
 }
 
-.no-margin{
+.no-margin {
     margin-top: 0;
     margin-bottom: 0;
+}
+
+.table-msgs {
+
+    @media screen and (max-width: 500px) {
+        font-size: .6rem;
+
+        td {
+            a {
+                font-size: .5rem;
+            }
+        }
+    }
+
 }

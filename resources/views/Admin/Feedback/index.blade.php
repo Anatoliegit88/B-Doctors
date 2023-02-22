@@ -4,7 +4,7 @@
     <div class="container mt-5">
 
 
-        <div class="col-10 mx-auto">
+        <div class="col-12 col-md-10 mx-auto">
             <table class="table table-striped " style="background-color: #d5e9f4;">
                 <thead>
                     <tr>
@@ -22,7 +22,7 @@
                         <tr>
                             <td>{{ $review->reviewer_name }}</th>
                             <td>{{ $review->vote }}</td>
-                            <td class=""> {{ date('d-m-Y' , strtotime($review->created_at) )}}</td>
+                            <td class=""> {{ date('d-m-Y', strtotime($review->created_at)) }}</td>
                             <td class="text-truncate" style="max-width: 150px;">{{ $review->review }}</td>
                             <td>
                                 <a class="btn btn-primary" href="{{ route('admin.feedback.show', $review) }}"> Info </a>
