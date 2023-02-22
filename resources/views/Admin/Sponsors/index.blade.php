@@ -22,21 +22,24 @@
                     <div class="col-8">
                         <h2> {{ $sponsor->title }}</h2>
                         @if ($sponsor->id === 1)
-                        <h6 class="mb-3">24 hours of sponrship!</h6>
+                        <h6 class="mb-3">24 hours </h6>
                         @elseif ($sponsor->id === 2)
-                        <h6 class="mb-3">72 hours of sponrship!</h6>
+                        <h6 class="mb-3">72 hours</h6>
                         @else
-                        <h6 class="mb-3">144 hours of sponrship!</h6>
+                        <h6 class="mb-3">144 hours</h6>
                         @endif
                         <p>{{ $sponsor->description }}</p>
                         <p> 
                             Price: 
                             <span class="fw-bold">
-                                ${{ $sponsor->price }}
+                                ${{ $sponsor->price }}, 
+                                @if ($sponsor->id === 3)
+                                    <span class="fw-bold">Best Price!</span>   
+                                @endif
                             </span>
                         </p>
                     </div>
-                    <a class="btn btn-primary mt-3" href="{{ route('admin.sponsor.show', $sponsor->id) }}">Buy</a>
+                    <a class="btn btn-primary mt-3" href="{{ route('admin.sponsor.show', $sponsor->id) }}">Buy now!</a>
                 </div>         
         @endforeach
 
