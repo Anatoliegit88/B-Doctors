@@ -58,10 +58,8 @@
                 <button class="button btn btn-primary" type="submit">buy!</button>
 
             </form>
-
-
-
         </div>
+        <a href="{{ route('admin.sponsor')}}"> <i class="fa-solid fa-circle-arrow-left fs-3"> </i> </a>
 
     </div>
     <script src="https://js.braintreegateway.com/web/dropin/1.33.7/js/dropin.min.js"></script>
