@@ -41,11 +41,11 @@
 
         <div class="row justify-content-center bg-doc bd-radius col-8 mx-auto mb-3">
 
-            <div class="d-flex justify-content-center  py-3 bd-radius">
+            <div class="mx-auto py-3 bd-radius">
                 
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 ">
+                <div class="row flex-wrap">
                     @foreach ($profile->specializations as $spec)
-                        <div class="col text-center fw-bold">
+                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mx-auto  text-center fw-bold">
                             #{{ $spec->title }}
                         </div>
                     @endforeach

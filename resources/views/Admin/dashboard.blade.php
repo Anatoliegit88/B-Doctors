@@ -18,8 +18,8 @@
                             Welcome Back DR. {{ Auth::user()->name }} {{Auth::user()->surname}}
                         </h4>
 
-                        <p class="ms-4">you have a total of {{$messages}} messages.</p>
-                        <p class="ms-4">you got {{$feedbacks}} feedbacks with an avegare vote of {{floor($avgVote)}}.</p>
+                        <p class="ms-4">You have a total of {{$messages}} messages.</p>
+                        <p class="ms-4">You got {{$feedbacks}} feedbacks with an avegare vote of {{floor($avgVote)}}.</p>
                     </div>
                 </div>
             </div>

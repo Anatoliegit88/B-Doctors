@@ -4,7 +4,7 @@
     <div class="container mt-5">
 
 
-        <div class="col-10 mx-auto">
+        <div class="col-10 mx-auto table-responsive">
             <table class="table table-striped " style="background-color: #d5e9f4;">
                 <thead>
                     <tr>
