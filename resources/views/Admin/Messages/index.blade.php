@@ -4,7 +4,7 @@
     <h2 class="text-center mt-3">Messages</h2>
     <div class="container mt-5">
 
-        <div class="col-12 col-md-10 mx-auto">
+        <div class="col-12 col-md-10 mx-auto table-responsive">
             <table class="table table-msgs table-striped" style="background-color: #d5e9f4;">
                 <thead>
                     <tr class="">
