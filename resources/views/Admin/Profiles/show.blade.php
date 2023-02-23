@@ -12,9 +12,15 @@
         <div class="row justify-content-center mb-3">
 
             <div class="bg-doc col-8 d-lg-flex justify-content-around py-4 bd-radius">
-                <div class="img-container mx-auto mx-lg-0">
-                    <img src="{{ asset('storage/' . $profile->user_detail->photo) }}" alt="">
-                </div>
+                @if ($profile->user_detail->photo)
+                    <div class="img-container mx-auto mx-lg-0">
+                        <img src="{{ asset('storage/' . $profile->user_detail->photo) }}" alt="">
+                    </div>
+                @else
+                    <div class="img-container mx-auto mx-lg-0">
+                        <img src="{{ asset('storage/images/4025200.png') }}" alt="">
+                    </div>
+                @endif
                 <div class="info-container mt-3">
                     <div class="text-center text-lg-start">
                         <div>
@@ -24,9 +30,12 @@
                             </span>
                         </div>
 
-                        <p class="">
-                            <i class="fa-solid fa-phone"></i> {{ $profile->user_detail?->phone }}
-                        </p>
+                        @if ($profile->user_detail?->phone)
+                            <p class="">
+                                <i class="fa-solid fa-phone"></i> {{ $profile->user_detail?->phone }}
+                            </p>
+                        @endif
+
 
                         <p>{{ $profile->user_detail?->performance }}</p>
 
@@ -42,7 +51,7 @@
         <div class="row justify-content-center bg-doc bd-radius col-8 mx-auto mb-3">
 
             <div class="mx-auto py-3 bd-radius">
-                
+
                 <div class="row flex-wrap">
                     @foreach ($profile->specializations as $spec)
                         <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mx-auto  text-center fw-bold">

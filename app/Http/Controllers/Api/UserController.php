@@ -24,6 +24,7 @@ class UserController extends Controller
             ->with('user_detail', 'specializations', 'feedback')
             ->withCount('feedback')
             ->withAvg('feedback', 'vote')
+            ->orderBy('expiration_date', 'desc')
             ->get();
 
         $sponsoredUserIds = $sponsoredUser->pluck('id')->toArray();
@@ -43,6 +44,7 @@ class UserController extends Controller
                 ->with('user_detail', 'specializations', 'feedback')
                 ->withCount('feedback')
                 ->withAvg('feedback', 'vote')
+                ->orderBy('expiration_date', 'desc')
                 ->whereHas('specializations', function ($q) use ($specSlug) {
                     $q->where('slug', $specSlug);
                 })
@@ -84,7 +86,7 @@ class UserController extends Controller
 
     public function show($slug)
     {
-        $user = User::with('user_detail', 'specializations', 'feedback')->where('slug', $slug)->first();
+        $user = User::with('user_detail', 'specializations', 'feedback')->where('slug', $slug)->withAvg('feedback', 'vote')->first();
         if ($user) {
             return response()->json([
                 'success' => true,
